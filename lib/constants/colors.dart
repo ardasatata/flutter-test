@@ -15,4 +15,28 @@ class AppColors {
     800: const Color(0xFFDB7424),
     900: const Color(0xFFD56217)
   };
+
+  static const Map<int, Color> primary = const <int, Color>{
+    900: const Color(0xFF1375C9)
+  };
+
+  static const Map<int, Color> secondary = const <int, Color>{
+    900: const Color(0xFFE70F0F)
+  };
+
+  static const Map<int, Color> dark = const <int, Color>{
+    900: const Color(0xFF253238)
+  };
+
+  static const Map<int, Color> green = const <int, Color>{
+    500: const Color(0xFF23A33F)
+  };
+
+  static const Map<int, Color> yellow = const <int, Color>{
+    500: const Color(0xFFFFB25B)
+  };
+
+  static const Map<int, Color> body = const <int, Color>{
+    300: const Color(0xFFF5F5F5)
+  };
 }

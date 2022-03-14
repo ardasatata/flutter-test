@@ -16,6 +16,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../widgets/button_widget.dart';
+import '../../widgets/text_widget.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -113,8 +116,9 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            AppIconWidget(image: 'assets/icons/ic_appicon.png'),
-            SizedBox(height: 24.0),
+            TextWidget(text: "Masuk Akun", type: TextType.h3),
+            SizedBox(height: 12.0),
+            TextWidget(text: "Silahkan Login dengan ID Marking & Password Anda", type: TextType.body),
             _buildUserIdField(),
             _buildPasswordField(),
             _buildForgotPasswordButton(),
@@ -187,18 +191,23 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildSignInButton() {
-    return RoundedButtonWidget(
-      buttonText: AppLocalizations.of(context).translate('login_btn_sign_in'),
-      buttonColor: Colors.orangeAccent,
-      textColor: Colors.white,
-      onPressed: () async {
-        if (_store.canLogin) {
-          DeviceUtils.hideKeyboard(context);
-          _store.login();
-        } else {
-          _showErrorMessage('Please fill in all fields');
-        }
-      },
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width / 6),
+      child:
+        ButtonWidget(
+          type: ButtonType.primary,
+          buttonText: AppLocalizations.of(context).translate('login_btn_sign_in'),
+          buttonColor: Colors.blueAccent,
+          textColor: Colors.white,
+          onPressed: () async {
+            if (_store.canLogin) {
+              DeviceUtils.hideKeyboard(context);
+              _store.login();
+            } else {
+              _showErrorMessage('Please fill in all fields');
+            }
+          },
+        ),
     );
   }
 
